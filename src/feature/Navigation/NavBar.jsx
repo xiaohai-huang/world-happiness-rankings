@@ -1,12 +1,16 @@
 import React from "react";
-import { Box, makeStyles, Typography } from "@material-ui/core";
+import { Box, Container, makeStyles, Typography } from "@material-ui/core";
 import grey from "@material-ui/core/colors/grey";
+import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
+  NavBar__Wrapper: {
+    backgroundColor: theme.palette.primary.main,
+    marginBottom: theme.spacing(3.5),
+  },
   NavBar: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: theme.palette.primary.main,
     padding: "1rem",
     height: "2rem",
   },
@@ -20,18 +24,21 @@ const useStyles = makeStyles((theme) => ({
 function NavBar() {
   const classes = useStyles();
   return (
-    <nav className={classes.NavBar}>
-      <Box className={classes.NavBar__Links}>
-        <NavLink>Rankings</NavLink>
-        <NavLink>Search</NavLink>
-        <NavLink>Factors</NavLink>
-      </Box>
-      <Box className={classes.NavBar__Links}>
-        <NavLink>Register</NavLink>
-        <NavLink>Login</NavLink>
-        <NavLink>Logout</NavLink>
-      </Box>
-    </nav>
+    <Container className={classes.NavBar__Wrapper}>
+      <nav className={classes.NavBar}>
+        <Box className={classes.NavBar__Links}>
+          <NavLink path="/">Home</NavLink>
+          <NavLink path="/rankings">Rankings</NavLink>
+          <NavLink path="/search">Search</NavLink>
+          <NavLink>Factors</NavLink>
+        </Box>
+        <Box className={classes.NavBar__Links}>
+          <NavLink>Register</NavLink>
+          <NavLink>Login</NavLink>
+          <NavLink>Logout</NavLink>
+        </Box>
+      </nav>
+    </Container>
   );
 }
 const useNavLinkStyles = makeStyles(() => ({
@@ -46,9 +53,15 @@ const useNavLinkStyles = makeStyles(() => ({
   },
 }));
 function NavLink({ path, children }) {
+  const history = useHistory();
   const classes = useNavLinkStyles();
+  const handleClick = () => history.push(path);
   return (
-    <Typography className={classes.NavBar__Link} variant="h6">
+    <Typography
+      className={classes.NavBar__Link}
+      variant="h6"
+      onClick={handleClick}
+    >
       {children}
     </Typography>
   );
