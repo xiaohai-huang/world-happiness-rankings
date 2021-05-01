@@ -30,12 +30,12 @@ function NavBar() {
           <NavLink path="/">Home</NavLink>
           <NavLink path="/rankings">Rankings</NavLink>
           <NavLink path="/search">Search</NavLink>
-          <NavLink>Factors</NavLink>
+          <NavLink path="/factors">Factors</NavLink>
         </Box>
         <Box className={classes.NavBar__Links}>
-          <NavLink>Register</NavLink>
-          <NavLink>Login</NavLink>
-          <NavLink>Logout</NavLink>
+          <NavLink path="/regitser">Register</NavLink>
+          <NavLink path="/login">Login</NavLink>
+          <NavLink path="/logout">Logout</NavLink>
         </Box>
       </nav>
     </Container>

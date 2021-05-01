@@ -11,6 +11,7 @@ function useCountries() {
     setLoading(true);
     API.getCountries()
       .then((data) => {
+        data.push("");
         setCountries(data);
         setError(null);
       })
