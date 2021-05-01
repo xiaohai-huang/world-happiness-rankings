@@ -6,6 +6,7 @@ const appendQueryParams = (url, queryObject) => {
   });
   return URL_object.toString();
 };
+
 const API = (() => {
   // { country, year }
   function getRankings(searchParams) {
