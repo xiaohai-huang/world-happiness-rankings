@@ -16,7 +16,7 @@ function RankingsTable({ year }) {
       sortable: true,
       filter: "agNumberColumnFilter",
     },
-    { headerName: "Country", field: "country" },
+    { headerName: "Country", field: "country", sortable: true, filter: true },
     {
       headerName: "Score",
       field: "score",

@@ -8,6 +8,7 @@ import YearSelect from "../Rankings/YearSelect";
 import CountrySelect from "../Search/CountrySelect";
 import FactorBarChart from "./FactorBarChart";
 import LimitSlider from "./LimitSlider";
+import NumRowsSlider from "./NumRowsSlider";
 const FACTOR_NAMES = [
   "economy",
   "family",
@@ -17,13 +18,13 @@ const FACTOR_NAMES = [
   "trust",
 ];
 const COLORS = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
-const LIMIT = 10;
 function FactorsPage() {
   const [year, setYear] = useState("2015");
   const [country, setCountry] = useState("");
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(50);
+  const [range, setRange] = React.useState([1, 10]);
   const { factors, error, loading } = useFactors(year, {
-    limit: LIMIT,
+    limit,
     country,
   });
   const { enqueueSnackbar } = useSnackbar();
@@ -43,7 +44,7 @@ function FactorsPage() {
         <LimitSlider
           limit={limit}
           setLimit={setLimit}
-          disabled={Boolean(country) || Boolean(error)}
+          disabled={Boolean(country) || Boolean(error) || !Boolean(year)}
         />
       </Box>
       <Box mt={2} />
@@ -54,17 +55,28 @@ function FactorsPage() {
         error={error}
         loading={loading}
       />
-      {!country && !loading && !error && limit !== (1 || 0) && (
+      {!country && !loading && !error && year && limit !== 1 && limit !== 0 && (
         <>
-          <Box mt={2} />
+          <Box mt={5} />
+          <Box display="flex" justifyContent="center">
+            <NumRowsSlider
+              max={factors.length}
+              value={range}
+              setValue={setRange}
+            />
+          </Box>
           <Grid container>
             {FACTOR_NAMES.map((factor, i) => {
+              // range starts at 1
+              let [left, right] = range;
+              left = left - 1;
+
               const countryNames = factors
                 .map((f) => f.country)
-                .slice(0, limit);
+                .slice(left, right);
               const singleFactorData = factors
                 .map((f) => f[factor])
-                .slice(0, limit);
+                .slice(left, right);
               return (
                 <Grid key={factor} item xs={12} md={6}>
                   <FactorBarChart

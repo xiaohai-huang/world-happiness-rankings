@@ -42,8 +42,6 @@ function isTokenValid(token) {
   const data = jwt.decode(token);
   const currentDate = new Date();
   const expireDate = new Date(data.exp * 1000); // missing 3 digits precision
-  console.log(currentDate);
-  console.log(expireDate);
   if (expireDate - currentDate < 0) {
     return false;
   } else {

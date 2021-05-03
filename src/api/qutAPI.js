@@ -1,8 +1,12 @@
 // append the object to the url as query params
 const appendQueryParams = (url, queryObject) => {
+  if (!queryObject) return url;
   const URL_object = new URL(url);
   Object.keys(queryObject).forEach((key) => {
-    if (queryObject[key]) URL_object.searchParams.set(key, queryObject[key]);
+    const value = queryObject[key];
+    if (value !== undefined && value !== null && value !== "") {
+      URL_object.searchParams.set(key, value);
+    }
   });
   return URL_object.toString();
 };
@@ -56,6 +60,7 @@ const API = (() => {
     const FACTORS_URL = `http://131.181.190.87:3000/factors/${year}`;
     const FACTORS_URL_QUERIES = appendQueryParams(FACTORS_URL, params);
     const token = localStorage.getItem("token");
+
     return fetch(FACTORS_URL_QUERIES, {
       headers: {
         accept: "application/json",
@@ -69,7 +74,13 @@ const API = (() => {
     });
   }
 
-  return { getRankings, getCountries, getFactors, register, login };
+  return {
+    getRankings,
+    getCountries,
+    getFactors,
+    register,
+    login,
+  };
 })();
 
 export default API;

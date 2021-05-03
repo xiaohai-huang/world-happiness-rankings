@@ -13,20 +13,51 @@ function FactorsTable({ year, factors, limit, loading, error }) {
       sortable: true,
       filter: "agNumberColumnFilter",
     },
-    { headerName: "Country", field: "country" },
+    { headerName: "Country", field: "country", sortable: true, filter: true },
     {
       headerName: "Score",
       field: "score",
       sortable: true,
       filter: "agNumberColumnFilter",
     },
-    { headerName: "Economy", field: "economy" },
-    { headerName: "Family", field: "family" },
-    { headerName: "Health", field: "health" },
-    { headerName: "Freedom", field: "freedom" },
-    { headerName: "Generosity", field: "generosity" },
-    { headerName: "Trust", field: "trust" },
+    {
+      headerName: "Economy",
+      field: "economy",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      headerName: "Family",
+      field: "family",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      headerName: "Health",
+      field: "health",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      headerName: "Freedom",
+      field: "freedom",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      headerName: "Generosity",
+      field: "generosity",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
+    {
+      headerName: "Trust",
+      field: "trust",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+    },
   ];
+
   return (
     <div
       className="ag-theme-balham"
@@ -42,7 +73,7 @@ function FactorsTable({ year, factors, limit, loading, error }) {
       {!year && <Typography>Please select a year.</Typography>}
       <AgGridReact
         columnDefs={columns}
-        rowData={year && factors.slice(0, limit)}
+        rowData={year && factors?.slice(0, limit)}
         pagination={true}
         paginationPageSize={10}
         loading={loading}
