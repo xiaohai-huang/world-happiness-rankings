@@ -4,14 +4,15 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const years = ["2015", "2016", "2017", "2018", "2019", "2020"];
 
-export default function YearSelect({ year, setYear, size }) {
+export default function YearSelect({ year, setYear, size, disabled }) {
   return (
     <Autocomplete
+      style={{ width: 200 }}
       options={years}
       value={year}
       onChange={(e, newValue) => setYear(newValue)}
       getOptionLabel={(option) => option}
-      style={{ width: 200 }}
+      disabled={disabled}
       renderInput={(params) => (
         <TextField
           {...params}

@@ -13,11 +13,13 @@ const appendQueryParams = (url, queryObject) => {
 
 const API = (() => {
   // { country, year }
-  function getRankings(searchParams) {
+  function getRankings(searchParams, all) {
     const RANKINGS_URL = "http://131.181.190.87:3000/rankings";
     const RANKINGS_URL_QUERIES = appendQueryParams(RANKINGS_URL, searchParams);
 
-    return fetch(RANKINGS_URL_QUERIES).then((res) => res.json());
+    return fetch(all ? RANKINGS_URL : RANKINGS_URL_QUERIES).then((res) =>
+      res.json()
+    );
   }
 
   function getCountries() {

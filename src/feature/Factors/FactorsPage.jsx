@@ -36,11 +36,13 @@ function FactorsPage() {
 
   return (
     <Container>
-      <Box display="flex">
-        <YearSelect year={year} setYear={setYear} size="medium" />
-        <Box ml={1} />
-        <CountrySelect country={country} setCountry={setCountry} />
-        <Box ml={1} />
+      <Box display="flex" flexWrap="wrap">
+        <Box pb={1} pr={1}>
+          <YearSelect year={year} setYear={setYear} size="medium" />
+        </Box>
+        <Box pb={1} pr={1}>
+          <CountrySelect country={country} setCountry={setCountry} />
+        </Box>
         <LimitSlider
           limit={limit}
           setLimit={setLimit}
