@@ -10,13 +10,14 @@ function AuthRoute({ children, ...rest }) {
       {...rest}
       render={(routerProps) => {
         // check if token exists
-        const token = localStorage.getItem("token");
+        let token = localStorage.getItem("token");
         if (!token) {
           enqueueSnackbar("Please login first!", {
             variant: "warning",
             preventDuplicate: true,
           });
         }
+
         // token exists then check if the token has expired
         else if (!isTokenValid(token)) {
           enqueueSnackbar("Token has expired, please login again!", {
@@ -25,6 +26,7 @@ function AuthRoute({ children, ...rest }) {
           });
           // clear the token
           localStorage.removeItem("token");
+          token = localStorage.getItem("token");
         }
 
         return token ? (
