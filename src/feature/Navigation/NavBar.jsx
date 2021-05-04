@@ -33,7 +33,7 @@ function NavBar() {
           <NavLink path="/factors">Factors</NavLink>
         </Box>
         <Box className={classes.NavBar__Links}>
-          <NavLink path="/regitser">Register</NavLink>
+          <NavLink path="/register">Register</NavLink>
           <NavLink path="/login">Login</NavLink>
           <NavLink path="/logout">Logout</NavLink>
         </Box>

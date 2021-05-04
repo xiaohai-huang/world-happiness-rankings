@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function RegisterPage() {
+function RegistrationPage() {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
@@ -71,7 +71,7 @@ function RegisterPage() {
       maxWidth="sm"
       onSubmit={handleSubmit}
     >
-      <Typography variant="h4">Regitser</Typography>
+      <Typography variant="h4">Register</Typography>
       <TextField
         type="email"
         variant="outlined"
@@ -110,7 +110,7 @@ function RegisterPage() {
         disabled={loading}
         onClick={handleSubmit}
       >
-        Register
+        Registration
       </Button>
     </Container>
   );
@@ -119,4 +119,4 @@ function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
-export default RegisterPage;
+export default RegistrationPage;

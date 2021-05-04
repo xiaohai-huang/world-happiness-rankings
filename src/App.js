@@ -4,7 +4,7 @@ import HomePage from "./feature/Home/HomePage";
 import SearchPage from "./feature/Search/SearchPage";
 import RankingsPage from "./feature/Rankings/RankingsPage";
 import LoginPage from "./feature/User/LoginPage";
-import RegisterPage from "./feature/User/RegisterPage";
+import RegistrationPage from "./feature/User/RegistrationPage";
 import LogoutPgae from "./feature/User/LogoutPgae";
 import AuthRoute from "./feature/User/AuthRoute";
 import FactorsPage from "./feature/Factors/FactorsPage";
@@ -25,8 +25,8 @@ function App() {
       <AuthRoute exact path="/factors">
         <FactorsPage />
       </AuthRoute>
-      <Route exact path="/regitser">
-        <RegisterPage />
+      <Route exact path="/register">
+        <RegistrationPage />
       </Route>
       <Route exact path="/login">
         <LoginPage />
