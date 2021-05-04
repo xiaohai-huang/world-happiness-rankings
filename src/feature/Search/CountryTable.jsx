@@ -31,7 +31,7 @@ function CountryTable({ country, rankings, years, loading, error }) {
       className="ag-theme-balham"
       style={{
         height: "300px",
-        width: "610px",
+        width: "100%",
       }}
     >
       {loading && <LinearProgress />}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, Grid } from "@material-ui/core";
 
 import CountrySelect from "./CountrySelect";
 import CountryTable from "./CountryTable";
@@ -30,9 +30,9 @@ function SearchPage() {
 
   return (
     <Container>
-      <Box display="flex" alignItems="center">
+      <Grid container alignItems="center" spacing={4}>
         {/* left */}
-        <Box>
+        <Grid item md={6} sm={5} xs={12}>
           <CountrySelect country={country} setCountry={setCountry} />
           <Box mt={2} />
           <CountryTable
@@ -42,17 +42,18 @@ function SearchPage() {
             error={error}
             years={chartData.years}
           />
-        </Box>
-        <Box ml={2} />
+        </Grid>
         {/* line chart */}
-        <Box width="100%" height="100%">
-          <RankChart
-            country={country}
-            years={chartData.years}
-            ranks={chartData.ranks}
-          />
-        </Box>
-      </Box>
+        <Grid item md={6} sm={7} xs={12}>
+          <Box width="100%" height="100%">
+            <RankChart
+              country={country}
+              years={chartData.years}
+              ranks={chartData.ranks}
+            />
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

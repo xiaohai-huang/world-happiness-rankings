@@ -32,6 +32,7 @@ function RegistrationPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email && password && confirmPassword) {

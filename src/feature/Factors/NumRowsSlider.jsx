@@ -39,7 +39,8 @@ export default function NumRowsSlider({ max, value, setValue }) {
   };
   useEffect(() => {
     // when the number in the slider is greater than
-    // the total number of countries available e.g. shrink # countries
+    // the total number of countries available
+    // e.g. users shrink # countries using limit slider
     const right = value[1];
     // display at least 2 countries
     if (max < 2) return;
