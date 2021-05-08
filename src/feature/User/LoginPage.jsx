@@ -56,7 +56,7 @@ function LoginPage() {
         enqueueSnackbar("Successfully login!", { variant: "success" });
         history.push("/");
       } catch (error) {
-        enqueueSnackbar(error.message, { variant: "error" });
+        enqueueSnackbar("Unable to login!", { variant: "error" });
       }
     } else {
       enqueueSnackbar("All fields are required!", { variant: "error" });
